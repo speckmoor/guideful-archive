@@ -6,19 +6,46 @@ body {
     font-family: 'League Spartan', sans-serif;
     background-color: #f4edea;
     color: #5a3145;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 1.6;
+}
+
+.main-content {
     min-height: 100vh;
+    padding: 2rem 0;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.archive-header {
     text-align: center;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #924d6f 0%, #5a3145 100%);
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.archive-logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: brightness(0) invert(1);
+}
+
+.archive-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.archive-subline {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin: 0;
 }
 
 .logo {
@@ -36,4 +63,288 @@ p {
     font-size: 1rem;
     line-height: 1.6;
     margin: 1rem 0;
+}
+
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+#lightbox.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox-image {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+#lightbox button {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    color: #5a3145;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#lightbox button:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+#lightbox-prev {
+    left: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#lightbox-next {
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#lightbox-close {
+    top: -80px;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .feature-box,
+    .screenshot-section {
+        padding: 2rem 1.5rem;
+    }
+    
+    .archive-header {
+        padding: 2rem 1rem;
+    }
+    
+    .archive-header h1 {
+        font-size: 2rem;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        display: block;
+        margin: 0.5rem 0;
+    }
+    
+    #lightbox-prev {
+        left: 10px;
+    }
+    
+    #lightbox-next {
+        right: 10px;
+    }
+    
+    #lightbox-close {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+
+.nav-links {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.nav-link {
+    display: inline-block;
+    margin: 0 1rem;
+    padding: 0.8rem 1.5rem;
+    color: #924d6f;
+    text-decoration: none;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    background: #924d6f;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(146, 77, 111, 0.3);
+}
+
+.screenshot-section {
+    background: white;
+    border-radius: 1rem;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.screenshot-section h2 {
+    color: #924d6f;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.thumbnail {
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.thumbnail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(146, 77, 111, 0.2);
+}
+
+.screenshot-thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.thumbnail figcaption {
+    font-size: 0.9rem;
+    color: #5a3145;
+    font-weight: 600;
+    margin: 0;
+}
+
+.back-to-top {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-to-top a {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    color: #924d6f;
+    text-decoration: none;
+    background: rgba(146, 77, 111, 0.1);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.back-to-top a:hover {
+    background: #924d6f;
+    color: white;
+}
+.feature-box {
+    background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.feature-box h2 {
+    color: #924d6f;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.feature-box p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.techstack-section {
+    margin: 2rem 0;
+}
+
+.techstack-section h3 {
+    color: #924d6f;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tech-list li {
+    background: #f8f9fa;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #924d6f;
+}
+
+.feature-box ul:not(.tech-list) {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.feature-box li:not(.tech-list li) {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
 }
